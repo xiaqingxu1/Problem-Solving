@@ -23,15 +23,6 @@ class Solution(object):
             result = max(result, s[m : n + 1], key=len)
         
         return result
-        # iterate through the string
-            # if current letter = next letter:
-                # move curr to next 
-                # move right pointer to next
-            # if current letter != next letter:
-                # check left pointer - 1, right pointer + 1
-                    # if they are the same letter, keep moving pointers as long as left >= 0, right <= len(s) - 1
-                    # if they are not the same letter, compare current str vs result and assing result to the longer string
-                # move curr to right pointer position
-                # move left pointer to right pointer position
+
            
         
