@@ -3,10 +3,10 @@ class Solution(object):
         dp = [[0 for x in range(len(text1) + 1)] for y in range(len(text2) + 1)]
         
         for c in range(len(text1) + 1):
-            dp[len(text2)][c] = 0
+            dp[-1][c] = 0
         
         for r in range(len(text2) + 1):
-            dp[r][len(text1)] = 0
+            dp[r][-1] = 0
         
         for i, char1 in reversed(list(enumerate(text2))):
             for j, char2 in reversed(list(enumerate(text1))):
