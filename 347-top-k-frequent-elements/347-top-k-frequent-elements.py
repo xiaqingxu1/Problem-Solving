@@ -8,6 +8,6 @@ class Solution(object):
         for n in nums:
             d[n] += 1
         
-        dd = OrderedDict(sorted(d.items(), key=lambda item: item[1], reverse=True))
-
-        return dd.keys()[:k]
+        ss = sorted(d.items(), key=lambda item: item[1], reverse=True)
+        
+        return [ x[0] for x in ss ][:k]
