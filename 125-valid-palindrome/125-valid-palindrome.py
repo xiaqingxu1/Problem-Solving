@@ -3,12 +3,10 @@ class Solution(object):
         
         ss = []
         
-        print(s.lower())
         for char in s.lower():
             
             if char.isalnum():
                 ss.append(char)
         
-        print(ss)
-        return ''.join(ss) == ''.join(reversed(ss))
+        return ss == ss[::-1]
         
