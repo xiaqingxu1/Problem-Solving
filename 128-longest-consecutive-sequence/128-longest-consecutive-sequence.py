@@ -3,14 +3,19 @@ class Solution(object):
         numSet = set(nums)
         longest = 0
 
-        for n in nums:
-            # check if its the start of a sequence
-            if (n - 1) not in numSet:
-                length = 1
-                while (n + length) in numSet:
-                    length += 1
-                longest = max(length, longest)
-        return longest
+        while numSet:
             
-           
+            first = last = numSet.pop()
+
+            while first - 1 in numSet:
+                first -= 1
+                numSet.remove(first)
+            
+            while last + 1 in numSet:
+                last += 1
+                numSet.remove(last)
+            
+            longest = max(longest, last - first + 1)
+        
+        return longest
         
