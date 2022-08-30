@@ -1,17 +1,14 @@
 class Solution(object):
     def characterReplacement(self, s, k):
-        dic = defaultdict(int)
-        res = 0
-        L = 0
+        res = lo = 0
+        counts = collections.Counter()
         
-        for R, charR in enumerate(s):
-            dic[charR] += 1
+        for hi in range(len(s)):
+            counts[s[hi]] += 1
+            max_char_n = counts.most_common(1)[0][1]
             
-            while (R - L + 1) - max(dic.values()) > k:
-                dic[s[L]] -= 1
-                L += 1
-            
-            res = max(res, R - L + 1)
-        
-        return res
+            if hi - lo - max_char_n + 1 > k:
+                counts[s[lo]] -= 1
+                lo += 1
+        return hi - lo + 1
         
