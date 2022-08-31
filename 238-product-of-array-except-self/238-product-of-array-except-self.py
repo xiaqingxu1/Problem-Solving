@@ -1,37 +1,34 @@
 class Solution(object):
     def productExceptSelf(self, nums):
+        res = [1] * len(nums)
         
-        curr = 1
-        arrLeft = [1]
-        for i in range(1, len(nums)):
-            curr = curr * nums[i - 1]
-            arrLeft.append(curr)
+        prefix = 1
+        for i, n in enumerate(nums):
+            res[i] = prefix
+            prefix *= n
         
-        
-        curr = 1
-        arrRight = [1]
-        for i in range(len(nums) - 2, -1, -1):
-            curr = curr * nums[i + 1]
-            arrRight.append(curr)
-        
-        arrRight = arrRight[::-1]
-        
-        return map(lambda x, y: x * y, arrLeft, arrRight)
-        
-        # currProduct = 1
-        # currentProductArray = [1]
-        # iterate over the nums, for each num
+        postfix = 1
+        for i, n in reversed(list(enumerate(nums))):
+            res[i] *= postfix
+            postfix *= n
             
-            # find out the product on the left, not including num itself
-                # if there no num on the left
-                # product = 1
-                #
-            # added to leftP array
+        return res
         
-        # iterate over the nums[::-1], for each num
-            # find out the product on the right
-            # added to the rightP array
         
-        # combine two arrays together by multiplying each pair
+        
+        
+        # res = [1] * len(nums) // array to present each product
+        
+        # prefix = 1
+        # iterate over the nums, for each i, num
+            # assgin prefix value to res[i]
+            # update prefix by mutiplyin num (to be used in next round)
+        
+        # postfix = 1
+        # iterate over the nums[::-1], for each i, num
+            # assign res[i] = postfix * res[i]
+            # update postfix by multiplying current num
+            
+        # return res
             
         
