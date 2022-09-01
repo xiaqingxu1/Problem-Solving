@@ -1,18 +1,23 @@
 class Solution(object):
     def countSubstrings(self, s):
         
-        curr = []
         count = 0
         
-        for char in s:
-            newCurr = [char]
-            for sub in curr:
-                newCurr.append(sub + char)
+        for i, char in enumerate(s):
+            count += self.helper(s, i, i)
+            if i < len(s) - 1:
+                count += self.helper(s, i, i + 1)
             
-            count += len(filter(lambda s: s == s[::-1], newCurr))
+            print(count)
             
-            curr = newCurr
+        return count
+    
+    def helper(self, string, left, right):
+        count = 0
+        
+        while left >= 0 and right <= len(string) - 1 and string[left] == string[right]:
+            count += 1
+            left -= 1
+            right += 1
         
         return count
-        
-        
