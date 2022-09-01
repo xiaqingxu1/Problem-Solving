@@ -9,8 +9,8 @@ class Solution(object):
         if not head or not head.next:
             return False
         
-        slow = head.next
-        fast = head.next.next
+        slow = head
+        fast = head.next
         
         try: 
             while slow != fast:
