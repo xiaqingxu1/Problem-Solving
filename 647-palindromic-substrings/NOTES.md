@@ -1,7 +1,7 @@
-declare curr = []
-declare count = 0
-iterate over the string, for each character:
-iterate over curr， 将curr中每一项都加上c，再将当前char加入curr
-更新 count += curr中palindrome
+The main idea is to **pick a center and then extend towards the bounds** of the input string. With this approach, we count all valid pallindrome substrings which are based on the specified center.
 ​
-return curr
+There are **two valid cases** of centers for finding pallindrome substrings:
+​
+If it's an **odd-lengthed** pallindrome string, then our centers will expand from same center and will match the criteria i=j. eg: for string "aba", center is i=j=1.
+If it's an **even-lengthed** pallindrome string, then our centers will not expand from same center and will match the criteria i+1=j eg: for string "abba",i=1, j=2.
+​
