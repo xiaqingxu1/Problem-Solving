@@ -5,11 +5,7 @@ class Solution(object):
         
         while left < right:
             
-            if nums[left] < nums[right]:
-                return nums[left]
-            
             mid = (left + right)//2
-            
             
             if nums[mid] < nums[right]:
                 right = mid
