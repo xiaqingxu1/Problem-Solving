@@ -1,18 +1,18 @@
 class Solution(object):
     def countSubstrings(self, s):
         
-        curr = []
-        count = 0
-        
-        for char in s:
-            newCurr = [char]
-            for sub in curr:
-                newCurr.append(sub + char)
-            
-            count += len(filter(lambda s: s == s[::-1], newCurr))
-            
-            curr = newCurr
-        
-        return count
-        
+        res = 0
+
+        for i in range(len(s)):
+            res += self.countPali(s, i, i)
+            res += self.countPali(s, i, i + 1)
+        return res
+
+    def countPali(self, s, l, r):
+        res = 0
+        while l >= 0 and r < len(s) and s[l] == s[r]:
+            res += 1
+            l -= 1
+            r += 1
+        return res
         
