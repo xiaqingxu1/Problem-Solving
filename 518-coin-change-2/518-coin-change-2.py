@@ -5,9 +5,8 @@ class Solution(object):
         dp[0] = 1
         
         for c in coins:
-            for n in range(1, amount + 1):
-                if n >= c:
-                    dp[n] += dp[n - c]
+            for n in range(c, amount + 1):
+                dp[n] += dp[n - c]
         
         return dp[amount]
         
