@@ -9,14 +9,16 @@ class Solution(object):
         if not root:
             return root
         
-        leftTree = root.left
-        rightTree = root.right
+        if root.left or root.right:
+            
+            leftTree = root.left
+            rightTree = root.right
         
-        root.left, root.right = rightTree, leftTree
+            root.left, root.right = rightTree, leftTree
         
-        self.invertTree(leftTree)
-        self.invertTree(rightTree)
-        
+            self.invertTree(leftTree)
+            self.invertTree(rightTree)
+
         return root
          
         
