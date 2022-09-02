@@ -6,11 +6,13 @@
 class Solution(object):
     def reorderList(self, head):
         
+        # find middle
         slow, fast = head, head.next
         while fast and fast.next:
             slow = slow.next
             fast = fast.next.next
         
+        # reverse second half
         second = slow.next 
         prev = slow.next = None
         while second:
@@ -19,6 +21,7 @@ class Solution(object):
             prev = second
             second = temp
         
+        # merge two halfs
         while prev:
             temp1, temp2 = head.next, prev.next
             head.next = prev
