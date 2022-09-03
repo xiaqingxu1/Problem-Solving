@@ -6,9 +6,6 @@
 #         self.right = right
 class Solution(object):
     def isSubtree(self, root, subRoot):
-        if not subRoot:
-            return True
-        
         if not root:
             return False
         
