@@ -20,13 +20,10 @@ class Solution(object):
     
     
     def sameTree(self, tree1, tree2):
+ 
+        if tree1 and tree2:
+            return tree1.val == tree2.val and self.sameTree(tree1.left, tree2.left) and self.sameTree(tree1.right, tree2.right)
         
-        if not tree1 and not tree2:
-            return True
         
-        if tree1 and tree2 and tree1.val == tree2.val:
-            return self.sameTree(tree1.left, tree2.left) and self.sameTree(tree1.right, tree2.right)
-        
-        else:
-            return False
+        return tree1 is tree2
         
