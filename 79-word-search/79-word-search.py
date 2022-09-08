@@ -2,25 +2,25 @@ class Solution:
     def exist(self, board: List[List[str]], word: str) -> bool:
         rows = len(board)
         cols = len(board[0])
-        used = set()        
 
 
-        def findNext(i, j, target):
-            if not target:
+        def dfs(r, c, i):
+            if i == len(word):
                 return True
-            used.add((i, j))
-            options = [(i + 1, j), (i, j + 1), (i - 1, j), (i, j - 1)]
-            for r, c in options:
-                if -1< r < rows and -1 < c < cols and board[r][c] == target[0] and (r, c) not in used:
-                    if findNext(r, c, target[1:]):
-                        return True
-            used.remove((i, j))            
+            if r < 0 or r >= rows or c < 0 or c >= cols or word[i] != board[r][c]:
+                return False
             
-        for i, row in enumerate(board):
-            for j, char in enumerate(row):
-                if char == word[0] :
-                    # used.add((i, j))
-                    if findNext(i, j, word[1:]):
-                        return True
+            temp = board[r][c]  
+            board[r][c] = 0
+            res = dfs(r + 1, c, i + 1) or dfs(r - 1, c, i + 1) or dfs(r, c - 1, i + 1) or dfs(r, c + 1, i + 1)
+            board[r][c] = temp
+            return res
+        
+        for r in range(rows):
+            for c in range(cols):
+                if dfs(r, c, 0):
+                    return True
         
         return False
+    
+            
