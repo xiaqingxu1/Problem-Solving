@@ -8,7 +8,7 @@ class Solution:
         dp[0] = 0
         
         for c in coins:
-            for n in range(amount + 1):
+            for n in range(1, amount + 1):
                 if n - c >= 0 and dp[n - c] != inf:
                     dp[n] = min(dp[n], 1 + dp[n - c])
         
