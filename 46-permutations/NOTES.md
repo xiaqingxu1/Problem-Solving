@@ -1,0 +1,1 @@
+对每一个数字， 可能的combination为 数字 + permutation from remanining nums
