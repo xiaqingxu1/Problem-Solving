@@ -1,18 +1,15 @@
 class Solution:
     def permute(self, nums: List[int]) -> List[List[int]]:
+        
+        if len(nums) <= 1:
+            return [nums]
+        
         res = []
+        for i in range(len(nums)):
+            perms = self.permute(nums[:i] + nums[i + 1:])
+            for p in perms:
+                res.append([nums[i]] + p)
         
-        
-        def dfs(i, path):
-            if i == len(nums):
-                res.append(path[:])
-                return
-            
-            for n in range(len(path) + 1):
-                copy = path[:]
-                copy.insert(n, nums[i])
-                dfs(i + 1, copy)
-                
-        
-        dfs(0, [])
         return res
+        
+        
