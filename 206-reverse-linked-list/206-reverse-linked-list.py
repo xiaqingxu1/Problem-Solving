@@ -5,15 +5,21 @@
 #         self.next = next
 class Solution(object):
     def reverseList(self, head):
-        if not head or not head.next:
+        """
+        :type head: ListNode
+        :rtype: ListNode
+        """
+        if not head:
             return head
         
-        second = head.next
+        prev = None
+        cur = head
         
-        reverse = self.reverseList(second)
+        while cur:
+            second = cur.next
+            cur.next = prev
+            prev, cur = cur, second
         
-        second.next = head
-        head.next = None
+        return prev
         
-        return reverse
         
