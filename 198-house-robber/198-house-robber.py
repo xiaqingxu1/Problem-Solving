@@ -1,16 +1,11 @@
 class Solution:
     def rob(self, nums: List[int]) -> int:
         
-        robSelf = nums[0]
-        robNext = 0
+        rob1, rob2 = 0, 0 
         
-        for i in range(1, len(nums)):
-            robSelf = nums[i]
-            if i >= 2:
-                robSelf += nums[i - 2]
+        for n in nums:
+            temp = max(n + rob1, rob2)
             
-            robNeighbor = nums[i - 1]
-            
-            nums[i] = max(robSelf, robNeighbor)
-        
-        return nums[-1]
+            rob1, rob2 = rob2, temp
+            print(rob1, rob2)
+        return rob2
