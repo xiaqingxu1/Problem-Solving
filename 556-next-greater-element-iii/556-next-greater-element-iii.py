@@ -9,12 +9,12 @@ class Solution:
             stack.append(rem) # stack = [1, 2]
             if len(stack) >= 2 and stack[-1] < stack[-2]:
                 
-                stack.sort()
-                stack.reverse()
+                stack.sort(reverse = True)
                 i = stack.index(rem)
                 last = stack.pop(i - 1)
                 stack.append(last)
                 break
+        
         
         while stack:
             y = stack.pop()
