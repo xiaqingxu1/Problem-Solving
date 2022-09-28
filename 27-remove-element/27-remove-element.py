@@ -11,5 +11,4 @@ class Solution:
             else:
                 left += 1
         
-        print(left)
         return left
