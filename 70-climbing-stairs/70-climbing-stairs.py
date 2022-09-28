@@ -1,11 +1,13 @@
-class Solution(object):
-    def climbStairs(self, n):
+class Solution:
+    def climbStairs(self, n: int) -> int:
+        dp = [0] * (n + 1)
         
-        one, two = 1, 1
+        dp[0] = 1
         
-        for i in range(2, n + 1):
-            temp = one
-            one = one + two
-            two = temp
+        for i in range(1, n + 1):
+            dp[i] = dp[i - 1]
+            
+            if i >= 2:
+                dp[i] += dp[i - 2]
         
-        return one
+        return dp[-1]
