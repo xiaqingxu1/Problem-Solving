@@ -6,9 +6,10 @@ class Solution:
         maxLen = 0
         for r in range(rows):
             matrix[r][-1] = int(matrix[r][-1])
-            
+            maxLen = max(maxLen, matrix[r][-1])
         for c in range(cols):
             matrix[-1][c] = int(matrix[-1][c])
+            maxLen = max(maxLen, matrix[-1][c])
         
         for r in range(rows - 2, -1, -1):
             for c in range(cols - 2, -1, -1):
@@ -16,8 +17,7 @@ class Solution:
                     matrix[r][c] = 0
                 else:
                     matrix[r][c] = 1 + min(matrix[r + 1][c], matrix[r][c + 1], matrix[r + 1][c + 1])
+                    maxLen = max(maxLen, matrix[r][c])
 
-        for r in range(rows):
-            for c in range(cols):
-                maxLen = max(maxLen, matrix[r][c])
+        
         return maxLen ** 2
