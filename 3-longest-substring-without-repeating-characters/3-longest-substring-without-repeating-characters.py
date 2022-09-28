@@ -1,19 +1,20 @@
-class Solution(object):
-    def lengthOfLongestSubstring(self, s):
+class Solution:
+    def lengthOfLongestSubstring(self, s: str) -> int:
         
-        dic = {}
-
         res = 0
         L = 0
-        
+        memo = {}
         for R, char in enumerate(s):
-            while char in dic:
-                del dic[s[L]]
+            while char in memo:
+                del memo[s[L]]
                 L += 1
+            memo[char] = R
             
-            dic[char] = R
             res = max(res, R - L + 1)
-            
+        
         return res
                 
         
+       
+        
+            
