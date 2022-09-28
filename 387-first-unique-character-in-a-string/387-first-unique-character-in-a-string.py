@@ -1,17 +1,12 @@
 from collections import OrderedDict
 class Solution:
     def firstUniqChar(self, s: str) -> int:
-        res = OrderedDict()
+        c = collections.Counter(s)
         
-        for char in s:
-            if char in res:
-                res[char] += 1
-            else:
-                res[char] = 1
-        
-        for key, value in res.items():
-            if value == 1:
-                return s.index(key)
+        print(c)
+        for i, let in enumerate(s):
+            if c[let] == 1:
+                return i
         
         return -1
             
