@@ -1,13 +1,12 @@
-class Solution(object):
-    def twoSum(self, nums, target):
+class Solution:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        stack = [nums[0]]
         
-        dic = {}
-        
-        for i, n in enumerate(nums):
-            if target - n in dic:
-                return [dic[target - n], i]
-            else:
-                dic[n] = i
-        
+        for i in range(1, len(nums)):
+            n = nums[i]
+            if target - n in stack:
+                idx = nums.index(target - n)
+                return [idx, i]
+            stack.append(n)
         
         
