@@ -1,12 +1,10 @@
-class Solution(object):
-    def isPalindrome(self, s):
+class Solution:
+    def isPalindrome(self, s: str) -> bool:
+        s = s.lower()
         
-        ss = []
-        
-        for char in s.lower():
-            
-            if char.isalnum():
-                ss.append(char)
+        lst = list(s)
+        lst = filter(lambda x: x.isalnum() == True, lst)
+        print(lst)
+        ss = "".join(lst)
         
         return ss == ss[::-1]
-        
