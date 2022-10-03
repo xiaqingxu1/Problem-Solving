@@ -1,9 +1,13 @@
 class Solution:
-    def maximalSquare(self, A: List[List[str]]) -> int:
+    def maximalSquare(self, matrix: List[List[str]]) -> int:        
+        rows, cols = len(matrix), len(matrix[0])
         
-        for i, r in enumerate(A):
-            r = A[i] = list(map(int, r))
-            for j, c in enumerate(r):
-                if i * j * c:
-                    r[j] = min(A[i-1][j], r[j-1], A[i-1][j-1]) + 1
-        return max(map(max, A)) ** 2
+        for r in range(rows):
+            for c in range(cols):
+                if r * c * int(matrix[r][c]):
+                    matrix[r][c] = 1 + min(matrix[r - 1][c], matrix[r][c - 1], matrix[r-1][c-1])
+                else:
+                    matrix[r][c] = int(matrix[r][c])
+        
+        return max(map(max, matrix)) ** 2
+                
