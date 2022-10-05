@@ -53,8 +53,7 @@ class Solution:
                     level.append(node.right)
             d += 1
             
-        for _ in range(len(level)):
-            node = level.popleft()
+        for node in level:
             left = node.left
             newNodeL = TreeNode(val, left, None)
             node.left = newNodeL
