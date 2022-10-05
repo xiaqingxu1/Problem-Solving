@@ -8,13 +8,13 @@ class Solution:
     def addOneRow(self, root: Optional[TreeNode], v: int, d: int) -> Optional[TreeNode]:
         if d == 1:
             return TreeNode(v, root, None)
-       
 
         dq = deque()
         dq.append(root)
         level = 1
-        while level != d - 1:
-            for _ in range(len(dq)):
+        while level < d - 1:
+            n = len(dq)
+            for _ in range(n):
                 curr = dq.popleft()
                 if curr.left:
                     dq.append(curr.left)
