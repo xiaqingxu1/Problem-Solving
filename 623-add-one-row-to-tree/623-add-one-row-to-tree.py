@@ -42,8 +42,7 @@ class Solution:
  
 
         d = 1
-        level = deque()
-        level.append(root)
+        level = deque([root])
         while d < depth - 1:
             n = len(level)
             for _ in range(n):
@@ -53,7 +52,7 @@ class Solution:
                 if node.right:
                     level.append(node.right)
             d += 1
-        print(level)   
+            
         for _ in range(len(level)):
             node = level.popleft()
             left = node.left
